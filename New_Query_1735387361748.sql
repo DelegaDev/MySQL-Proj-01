@@ -8,6 +8,7 @@
 -- Notes : 
 -- Description:
 
+# Creación de la tabla de unión entre usuario y correo
 CREATE TABLE usuario_correo (
     usuario_id INT NOT NULL,
     correo_id INT NOT NULL,
