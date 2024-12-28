@@ -57,7 +57,6 @@ CREATE TABLE modeloDisp (
 INSERT INTO marcaDisp (nombre) VALUES ('Samsung');
 
 # Inserción de datos en la tabla de modelos de dispositivos
-
 INSERT INTO modeloDisp (nombre, marca_id)
 VALUES
 ('Galaxy A10', 1),
@@ -68,9 +67,7 @@ VALUES
 ('Galaxy A15', 1),
 ('Galaxy Tab A9', 1);
 
-# Modificando la tabla dispositivo para crean relación con modeloDisp
+# Modificando la tabla dispositivo para crear relación con modeloDisp
 ALTER TABLE dispositivo
-ADD COLUMN modelo_id INT NOT NULL;
-
-ALTER TABLE dispositivo
+ADD COLUMN modelo_id INT NOT NULL
 ADD FOREIGN KEY (modelo_id) REFERENCES modelodisp (id);
