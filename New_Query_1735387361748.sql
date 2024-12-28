@@ -36,3 +36,41 @@ VALUES
 SELECT U.nombre, U.apellido, C.email, C.tipo FROM usuario U
 JOIN usuario_correo UC ON U.id = UC.usuario_id
 JOIN correo C ON UC.correo_id = C.id;
+
+# Creando tabla de marcas de dispositivos
+CREATE TABLE marcaDisp (
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+# Creando tabla modelo de marcas de dispositivos
+CREATE TABLE modeloDisp (
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    marca_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (marca_id) REFERENCES marcaDisp (id)
+);
+
+# Inserción de datos en la tabla de marcas de dispositivos
+INSERT INTO marcaDisp (nombre) VALUES ('Samsung');
+
+# Inserción de datos en la tabla de modelos de dispositivos
+
+INSERT INTO modeloDisp (nombre, marca_id)
+VALUES
+('Galaxy A10', 1),
+('Galaxy A11', 1),
+('Galaxy A12', 1),
+('Galaxy A13', 1),
+('Galaxy A14', 1),
+('Galaxy A15', 1),
+('Galaxy Tab A9', 1);
+
+# Modificando la tabla dispositivo para crean relación con modeloDisp
+ALTER TABLE dispositivo
+ADD COLUMN modelo_id INT NOT NULL;
+
+ALTER TABLE dispositivo
+ADD FOREIGN KEY (modelo_id) REFERENCES modelodisp (id);
