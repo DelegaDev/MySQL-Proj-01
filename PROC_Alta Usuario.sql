@@ -1,5 +1,5 @@
 -- Active: 1735395480593@@127.0.0.1@3306@teleco
-CREATE DEFINER=`root`@`localhost` PROCEDURE `nuevo_ususario`(
+CREATE PROCEDURE nuevo_ususario(
     IN p_dni CHAR (9),
     IN p_nombre VARCHAR (20),
     IN p_apellido VARCHAR (50),
