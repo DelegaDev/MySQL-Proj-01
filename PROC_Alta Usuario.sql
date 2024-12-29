@@ -23,3 +23,5 @@ BEGIN
 END
 -- Ejecutando el procedimiento almacenado
 CALL nuevo_ususario('12345678A', 'Juan', 'Perez', 89456, 1);
+
+SHOW PROCEDURE STATUS WHERE Db = 'teleco';
