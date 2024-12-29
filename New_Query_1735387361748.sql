@@ -71,3 +71,25 @@ VALUES
 ALTER TABLE dispositivo
 ADD COLUMN modelo_id INT NOT NULL
 ADD FOREIGN KEY (modelo_id) REFERENCES modelodisp (id);
+
+# Creando tabla de tarjeta sim con relación a la tabla linea 
+CREATE TABLE sim (
+    id INT (11) NOT NULL AUTO_INCREMENT,
+    icc VARCHAR (19) NOT NULL,
+    pin VARCHAR (4),
+    puk VARCHAR (10),
+    linea_id INT (11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (linea_id) REFERENCES linea (id);
+);
+# Adding
+CREATE TABLE linea (
+    id INT (11) NOT NULL AUTO_INCREMENT,
+    numero VARCHAR (12) NOT NULL,
+    corto VARCHAR (6),
+    multisim BOOLEAN NOT NULL,
+    PRIMARY KEY (id)
+);
+# Añadiendo clave foranea a la tabla dispositivo ya que puede tener mas de una SIM
+ALTER TABLE dispositivo
+ADD FOREIGN KEY (sim_id) REFERENCES sim (id);
