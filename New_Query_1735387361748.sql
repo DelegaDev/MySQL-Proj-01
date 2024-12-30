@@ -93,3 +93,15 @@ CREATE TABLE linea (
 # Añadiendo clave foranea a la tabla dispositivo ya que puede tener mas de una SIM
 ALTER TABLE dispositivo
 ADD FOREIGN KEY (sim_id) REFERENCES sim (id);
+
+-- Creando tabla de recepción de dispositivo y/o accesorio
+CREATE TABLE recepcion (
+    fecha DATETIME NOT NULL,
+    usuario_id INT NOT NULL,
+    dispositivo_id INT NOT NULL,
+    accesorio_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, dispositivo_id, accesorio_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario (id),
+    FOREIGN KEY (dispositivo_id) REFERENCES dispositivo (id),
+    FOREIGN KEY (accesorio_id,dispositivo_id) REFERENCES dispositivo_accesorio (accesorio_id,dispositivo_id)
+);
