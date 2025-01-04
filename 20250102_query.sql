@@ -112,3 +112,9 @@ CREATE TABLE asignacion (
     FOREIGN KEY (dispositivo_id) REFERENCES dispositivo (id),
     FOREIGN KEY (accesorio_id) REFERENCES accesorios (id)
 )
+
+CREATE TABLE debug_log (
+    message VARCHAR(255)
+);
+
+SELECT id FROM dispositivo WHERE imei = '123456789012345'
